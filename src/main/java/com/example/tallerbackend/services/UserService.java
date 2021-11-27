@@ -1,42 +1,31 @@
 package com.example.tallerbackend.services;
 
-import com.example.tallerbackend.models.UsuarioDTO;
-import com.example.tallerbackend.repositories.IUsuarioRepository;
+import com.example.tallerbackend.models.UserDTO;
+import com.example.tallerbackend.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UserService {
     @Autowired
-    IUsuarioRepository IUsuarioRepository;
+    IUserRepository IUserRepository;
 
-    public ArrayList<UsuarioDTO> obtenerUsuarios() {
-        return (ArrayList<UsuarioDTO>) IUsuarioRepository.findAll();
+    public ArrayList<UserDTO> getAllUsers() {
+        return (ArrayList<UserDTO>) IUserRepository.findAll();
     }
 
-    public UsuarioDTO guardarUsuario(UsuarioDTO usuario) {
-        return IUsuarioRepository.save(usuario);
+    public UserDTO getUserById(Long id) {
+        return IUserRepository.findById(id).get();
     }
 
-    public Optional<UsuarioDTO> obtenerUsuarioPorId(Long id) {
-        return IUsuarioRepository.findById(id);
+    public UserDTO saveUser(UserDTO usuario) {
+        return IUserRepository.save(usuario);
     }
 
-    public ArrayList<UsuarioDTO> obtenerUsuarioPorPrioridad(Integer prioridad) {
-        return IUsuarioRepository.findByPrioridad(prioridad);
-    }
-
-    public boolean eliminarUsuario(Long id) {
-        try{
-            IUsuarioRepository.deleteById(id);
-            return true;
-        } catch (Exception err) {
-            return false;
-        }
-
+    public void deleteUserById(Long id) {
+        IUserRepository.deleteById(id);
     }
 
 }
