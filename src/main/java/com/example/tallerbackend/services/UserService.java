@@ -1,6 +1,6 @@
 package com.example.tallerbackend.services;
 
-import com.example.tallerbackend.models.UsuarioModel;
+import com.example.tallerbackend.models.UsuarioDTO;
 import com.example.tallerbackend.repositories.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,19 +13,19 @@ public class UsuarioService {
     @Autowired
     IUsuarioRepository IUsuarioRepository;
 
-    public ArrayList<UsuarioModel> obtenerUsuarios() {
-        return (ArrayList<UsuarioModel>) IUsuarioRepository.findAll();
+    public ArrayList<UsuarioDTO> obtenerUsuarios() {
+        return (ArrayList<UsuarioDTO>) IUsuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario) {
+    public UsuarioDTO guardarUsuario(UsuarioDTO usuario) {
         return IUsuarioRepository.save(usuario);
     }
 
-    public Optional<UsuarioModel> obtenerUsuarioPorId(Long id) {
+    public Optional<UsuarioDTO> obtenerUsuarioPorId(Long id) {
         return IUsuarioRepository.findById(id);
     }
 
-    public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(Integer prioridad) {
+    public ArrayList<UsuarioDTO> obtenerUsuarioPorPrioridad(Integer prioridad) {
         return IUsuarioRepository.findByPrioridad(prioridad);
     }
 

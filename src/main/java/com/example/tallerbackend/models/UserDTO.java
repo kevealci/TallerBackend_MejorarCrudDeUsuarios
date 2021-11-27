@@ -9,17 +9,15 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@Entity
-@Table(name = "usuario")
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioModel {
+@Entity
+@Table(name = "usuario")
+public class UsuarioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
     private String nombre;
     private String email;
-    private Integer prioridad;
-
 }
